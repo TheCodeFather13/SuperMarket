@@ -1,5 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Plugins.DataStore.InMemory;
+using UseCases;
+using UseCases.DataStorePluginInterfaces;
+using UseCases.UseCasesInterfaces;
 using WebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+// Dependency Injection for InMemory DataStore
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+// Dependency injection for UseCases
+builder.Services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
 
 var app = builder.Build();
 
