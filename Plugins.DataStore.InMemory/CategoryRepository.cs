@@ -9,21 +9,39 @@ namespace Plugins.DataStore.InMemory
 
         public CategoryRepository()
         {
-            _categories = new List<Category>()
+            _categories.Add(new Category()
             {
-                new Category { CategoryId = 1, Name = "Books", Description = "Original Books"},
-                new Category { CategoryId = 2, Name = "NoteBooks", Description = "Original NoteBooks"},
-                new Category { CategoryId = 3, Name = "Monitors", Description = "Original Monitors"},
-            };
+                CategoryId = 1,
+                Name = "Books",
+                Description = "Books category example"
+            });
+
+            _categories.Add(new Category()
+            {
+                CategoryId = 2,
+                Name = "Cars",
+                Description = "Cars category example"
+            });
+
+            _categories.Add(new Category()
+            {
+                CategoryId = 3,
+                Name = "Sports",
+                Description = "Sports category example"
+            });
         }
 
         public void AddCategory(Category category)
         {
-            if (_categories.Any(x => x.Name.Equals(category.Name, StringComparison.OrdinalIgnoreCase))) return;
-           
-            var maxCategoryId=_categories.Max(x => x.CategoryId);
-            category.CategoryId = maxCategoryId + 1;
-           
+           if(_categories != null && _categories.Count > 0)
+            {
+                var maxCategoryId = _categories.Max(x => x.CategoryId);
+                category.CategoryId = maxCategoryId + 1;
+            }
+            else
+            {
+                category.CategoryId = 1;
+            }          
             _categories.Add(category);
         }
 
@@ -48,6 +66,11 @@ namespace Plugins.DataStore.InMemory
         public Category GetCategoryById(int categoryId)
         {
             return _categories?.FirstOrDefault(x => x.CategoryId == categoryId);
+        }
+
+        public void DeleteCategory(int categoryId)
+        {
+            _categories?.Remove(GetCategoryById(categoryId));
         }
     }
 }
