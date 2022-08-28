@@ -2,7 +2,7 @@
 using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
 
-namespace UseCases
+namespace UseCases.MainUseCaseCategory
 {
     public class ViewCategoriesUseCase : IViewCategoriesUseCase
     {
