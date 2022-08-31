@@ -28,7 +28,7 @@
                     <td>@product.Price</td>
                     <td>@product.Quantity</td>
                     <td>
-                        <button class="btn btn-succes">Edit</button>
+                        <button class="btn btn-success" @onclick="@(() => EditProduct(product))">Edit</button>                    
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
@@ -56,4 +56,10 @@ else
     {
         NavigationManager.NavigateTo("/addproduct");
     }
+
+    private void EditProduct(Product product)
+    {
+        NavigationManager.NavigateTo($"/editproduct/{product.ProductId}");
+    }
+
 }

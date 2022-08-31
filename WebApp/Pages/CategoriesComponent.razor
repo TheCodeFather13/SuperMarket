@@ -23,7 +23,7 @@
                 <tr>
                     <td>@category.Name</td>
                     <td>@category.Description</td>
-                    <td><button type="button" class="btn btn-link" @onclick="@(() => EditCategory(category))">Edit</button></td>
+                    <td><button type="button" class="btn btn-success" @onclick="@(() => EditCategory(category))">Edit</button></td>
                     <td><button type="button" class="btn btn-danger" @onclick="@(() => DeleteCategory(category.CategoryId))">Delete</button></td>      
                 </tr>
             }
