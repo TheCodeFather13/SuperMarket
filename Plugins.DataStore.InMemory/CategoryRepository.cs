@@ -5,7 +5,7 @@ namespace Plugins.DataStore.InMemory
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private List<Category> _categories;
+        private List<Category> _categories = new List<Category>();
 
         public CategoryRepository()
         {
@@ -42,7 +42,7 @@ namespace Plugins.DataStore.InMemory
             {
                 category.CategoryId = 1;
             }          
-            _categories.Add(category);
+            _categories?.Add(category);
         }
 
         public IEnumerable<Category> GetCategories()
@@ -66,11 +66,11 @@ namespace Plugins.DataStore.InMemory
         public Category GetCategoryById(int categoryId)
         {
             return _categories?.FirstOrDefault(x => x.CategoryId == categoryId);
-        }
+        } 
 
         public void DeleteCategory(int categoryId)
         {
-            _categories?.Remove(GetCategoryById(categoryId));
+            _categories.Remove(GetCategoryById(categoryId));
         }
     }
 }

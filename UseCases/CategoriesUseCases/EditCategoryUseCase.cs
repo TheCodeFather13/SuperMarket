@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
 
-namespace UseCases.MainUseCaseCategory
+namespace UseCases.CategoriesUseCases
 {
     public class EditCategoryUseCase : IEditCategoryUseCase
     {

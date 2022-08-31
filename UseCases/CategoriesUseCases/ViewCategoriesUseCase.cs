@@ -1,8 +1,9 @@
 ﻿using CoreBusiness;
+using System.Collections.Generic;
 using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
 
-namespace UseCases.MainUseCaseCategory
+namespace UseCases.CategoriesUseCases
 {
     public class ViewCategoriesUseCase : IViewCategoriesUseCase
     {
