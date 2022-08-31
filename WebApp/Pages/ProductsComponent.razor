@@ -1,0 +1,59 @@
+﻿@page "/products"
+@using CoreBusiness
+@using UseCases.ProductsUseCasesInterfaces
+@inject IViewProductsUseCase ViewProductsUseCase
+@inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
+@inject NavigationManager NavigationManager
+
+<h3>Products List</h3>
+
+@if(products != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Category</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var product in products)
+            {
+                <tr>
+                    <td>@GetCategoryByIdUseCase.Execute(product.CategoryId)?.Name</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Quantity</td>
+                    <td>
+                        <button class="btn btn-succes">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="button" @onclick="OnClickAddProduct" class="btn btn-primary">Add product</button>
+}
+else
+{
+    <h2>No products in list, add them first!</h2>
+}
+
+
+@code {
+    private IEnumerable<Product> products;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        products = ViewProductsUseCase.Execute();
+    }
+
+    private void OnClickAddProduct()
+    {
+        NavigationManager.NavigateTo("/addproduct");
+    }
+}

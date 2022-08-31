@@ -13,6 +13,8 @@ using UseCases;
 using UseCases.CategoriesUseCases;
 using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
+using UseCases.ProductsUseCase;
+using UseCases.ProductsUseCasesInterfaces;
 
 namespace WebApp
 {
@@ -30,14 +32,21 @@ namespace WebApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+           
             // Dependency Injection In Memory Data Store
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            // Dependency Injection for UseCases and Repositories
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            // Category Use Case
             services.AddTransient<IViewCategoriesUseCase, ViewCategoriesUseCase>();
             services.AddTransient<IAddCategoryUseCase, AddCategoryUseCase>();
             services.AddTransient<IEditCategoryUseCase, EditCategoryUseCase>();
             services.AddTransient<IGetCategoryByIdUseCase, GetCategoryByIdUseCase>();
             services.AddTransient<IDeleteCategoryUseCase, DeleteCategoryUseCase>();
+
+            // Product Use Case
+            services.AddTransient<IViewProductsUseCase, ViewProductsUseCase>();
+            services.AddTransient<IAddProductUseCase, AddProductUseCase>();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

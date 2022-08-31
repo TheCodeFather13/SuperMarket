@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UseCases.DataStorePluginInterfaces
+namespace UseCases.ProductsUseCasesInterfaces
 {
-    public interface IProductRepository
+    public interface IAddProductUseCase
     {
-        IEnumerable<Product> GetProducts();
         void AddProduct(Product product);
     }
 }
