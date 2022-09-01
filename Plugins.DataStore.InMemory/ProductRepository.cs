@@ -82,6 +82,11 @@ namespace Plugins.DataStore.InMemory
            return _products.Find(x => x.ProductId == id);                      
         }
 
+        public IEnumerable<Product> GetProductByCategoryId(int categoryId)
+        {
+            return _products.FindAll(x => x.CategoryId == categoryId);
+        }
+
         public void DeleteProduct(int productId)
         {
             var productToDelete = GetProductById(productId);
