@@ -21,7 +21,7 @@ namespace Plugins.DataStore.InMemory
                     CategoryId = 1,
                     Name = "Adventures of Tom Sowyer",
                     Quantity = 15,
-                    Price = 12.5m
+                    Price = 12.53m
                 },
 
                 new Product()
@@ -30,7 +30,7 @@ namespace Plugins.DataStore.InMemory
                     CategoryId = 2,
                     Name = "BMW Toy",
                     Quantity = 35,
-                    Price = 18.3m
+                    Price = 18.35m
                 },
 
                 new Product()
@@ -39,7 +39,7 @@ namespace Plugins.DataStore.InMemory
                     CategoryId = 1,
                     Name = "Vinni Poof",
                     Quantity = 27,
-                    Price = 5.7m
+                    Price = 5.77m
                 }
             };
         }
