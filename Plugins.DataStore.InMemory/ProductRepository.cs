@@ -81,5 +81,14 @@ namespace Plugins.DataStore.InMemory
         {
            return _products.Find(x => x.ProductId == id);                      
         }
+
+        public void DeleteProduct(int productId)
+        {
+            var productToDelete = GetProductById(productId);
+            if(productToDelete != null)
+            {
+                _products.Remove(productToDelete);
+            }
+        }
     }
 }

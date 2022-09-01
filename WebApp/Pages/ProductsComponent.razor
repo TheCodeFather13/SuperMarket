@@ -3,6 +3,7 @@
 @using UseCases.ProductsUseCasesInterfaces
 @inject IViewProductsUseCase ViewProductsUseCase
 @inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
+@inject IDeleteProductUseCase DeleteProductUseCase
 @inject NavigationManager NavigationManager
 
 <h3>Products List</h3>
@@ -29,7 +30,7 @@
                     <td>@product.Quantity</td>
                     <td>
                         <button class="btn btn-success" @onclick="@(() => EditProduct(product))">Edit</button>                    
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-danger" @onclick="@(() => DeleteProduct(product.ProductId))">Delete</button>
                     </td>
                 </tr>
             }
@@ -45,6 +46,12 @@ else
 
 @code {
     private IEnumerable<Product> products;
+    private Product newProduct;
+
+    private void LoadProducts()
+    {
+        products = ViewProductsUseCase.Execute().ToList();
+    }
 
     protected override void OnInitialized()
     {
@@ -62,4 +69,9 @@ else
         NavigationManager.NavigateTo($"/editproduct/{product.ProductId}");
     }
 
+    private void DeleteProduct(int productId)
+    {
+        DeleteProductUseCase.Delete(productId);
+        LoadProducts();
+    }
 }
