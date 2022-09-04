@@ -8,6 +8,6 @@ namespace UseCases.ProductsUseCasesInterfaces
 {
     public interface ISellProductUseCase
     {
-        void Execute(int productId, int quatityToSell);
+        void Execute(string cashierName, int productId, int quatityToSell);
     }
 }

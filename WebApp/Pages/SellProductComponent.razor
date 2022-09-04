@@ -3,6 +3,7 @@
 
 @inject IGetProductByIdUseCase GetProductByIdUseCase
 @inject ISellProductUseCase SellProductUseCase
+@inject IRecordTransactionUseCase RecordTransactionUseCase
 
 <h3>Details about product</h3>
 
@@ -35,11 +36,19 @@
 
 
 @code {
+    private Product productToSell;
+    private string errorMessage;
+
+    [Parameter]
+    public string CashierName{ get; set; }
+
     [Parameter]
     public Product SelectedProduct{ get; set; }
 
     [Parameter]
     public EventCallback<Product> OnProductSold{ get; set; }
+
+
 
     protected override void OnParametersSet()
     {
@@ -55,6 +64,10 @@
                     Quantity = 0
                 };
         }
+        else
+        {
+            productToSell = null;
+        }
     }
 
     private void SellProduct()
@@ -68,7 +81,12 @@
         {
             OnProductSold.InvokeAsync(productToSell);
             errorMessage = "";
-            SellProductUseCase.Execute(productToSell.ProductId, productToSell.Quantity);
+            if(string.IsNullOrEmpty(CashierName))
+            {
+                errorMessage = "Cashier Name is required!";
+                return;
+            }
+            SellProductUseCase.Execute(CashierName, productToSell.ProductId, productToSell.Quantity);
         }
         else
         {
@@ -76,8 +94,7 @@
         }
     }
 
-    private Product productToSell;
-    private string errorMessage;
+  
 
     
 }

@@ -47,11 +47,6 @@ else
 @code {
     private IEnumerable<Product> products;
 
-    private void LoadProducts()
-    {
-        products = ViewProductsUseCase.Execute().ToList();
-    }
-
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -71,6 +66,6 @@ else
     private void DeleteProduct(int productId)
     {
         DeleteProductUseCase.Delete(productId);
-        LoadProducts();
+        NavigationManager.NavigateTo("/products");
     }
 }
