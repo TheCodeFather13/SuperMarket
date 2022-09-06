@@ -25,12 +25,14 @@ namespace UseCases.ProductsUseCase
            var productToSell = _productRepository.GetProductById(productId);
             if (productToSell == null) return;
 
+            // add transaction of sell product
+            _recordTransactionUseCase.Execute(cashierName, productId, quantityToSell);
+
             // change product quantity
             productToSell.Quantity -= quantityToSell;
 
             // then update product
-            _productRepository.Update(productToSell);
-            _recordTransactionUseCase.Execute(cashierName, productId, quantityToSell);
+            _productRepository.Update(productToSell);          
         }
     }
 }

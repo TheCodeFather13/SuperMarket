@@ -23,7 +23,7 @@ namespace UseCases.ProductsUseCase
         public void Execute(string cashierName, int productId, int quantity)
         {
             var product = _getProductByIdUseCase.GetProductById(productId);
-            _transactionRepository.Save(cashierName, productId, product.Price, quantity);
+            _transactionRepository.Save(cashierName, productId,product.Name, product.Price,product.Quantity, quantity);
         }
     }
 }

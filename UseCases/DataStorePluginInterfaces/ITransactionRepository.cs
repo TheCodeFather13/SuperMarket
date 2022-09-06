@@ -9,7 +9,8 @@ namespace UseCases.DataStorePluginInterfaces
 {
     public interface ITransactionRepository
     {
-        void Save(string cashierName, int productId, decimal price, int quantity);
-        IEnumerable<Transaction> GetTransactionsByDay(DateTime day);
+        void Save(string cashierName, int productId,string productName, decimal price, int beforeQuantity, int soldQuantity);
+        IEnumerable<Transaction> GetTransactionsByDay(string cashierName, DateTime day);
+        IEnumerable<Transaction> GetAll(string cashierName);
     }
 }
