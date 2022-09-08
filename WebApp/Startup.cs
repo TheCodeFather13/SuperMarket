@@ -15,6 +15,8 @@ using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
 using UseCases.ProductsUseCase;
 using UseCases.ProductsUseCasesInterfaces;
+using Plugins.DataStore.Sql;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp
 {
@@ -32,6 +34,12 @@ namespace WebApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            // Database
+            services.AddDbContext<SuperMarketDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
            
             // Dependency Injection In Memory Data Store
             services.AddScoped<ICategoryRepository, CategoryRepository>();

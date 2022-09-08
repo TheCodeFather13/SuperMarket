@@ -11,5 +11,8 @@ namespace CoreBusiness
 
         [Required]
         public string Description { get; set; }
+
+        // navigation properties
+        public List<Product> Products { get; set; }
     }
 }

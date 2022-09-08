@@ -22,5 +22,8 @@ namespace CoreBusiness
 
         [Required]
         public decimal Price { get; set; }
+
+        // navigation properties
+        public Category Category { get; set; }
     }
 }
