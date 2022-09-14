@@ -1,22 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Plugins.DataStore.InMemory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UseCases;
-using UseCases.CategoriesUseCases;
+﻿using UseCases.CategoriesUseCases;
 using UseCases.DataStorePluginInterfaces;
 using UseCases.UseCasesInterfaces;
 using UseCases.ProductsUseCase;
 using UseCases.ProductsUseCasesInterfaces;
 using Plugins.DataStore.Sql;
 using Microsoft.EntityFrameworkCore;
+using Plugins.DataStore.Sql.Repositories;
 
 namespace WebApp
 {

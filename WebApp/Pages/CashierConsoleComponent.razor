@@ -58,6 +58,7 @@
 
     private void SellProduct(Product product)
     {
-        transactionsComponent.LoadTransactions(cashierName);
+        StateHasChanged();
+        transactionsComponent.LoadTransactions(cashierName);      
     }
 }
