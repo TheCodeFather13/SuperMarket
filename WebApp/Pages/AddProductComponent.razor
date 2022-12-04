@@ -2,6 +2,8 @@
 @using CoreBusiness
 @using UseCases.ProductsUseCasesInterfaces
 
+@*@attribute [Authorize(Policy = "AdminOnly")]*@
+
 @inject IAddProductUseCase AddProductUseCase
 @inject IGetCategoryByIdUseCase GetCategoryByIdUseCase
 @inject IViewCategoriesUseCase ViewCategoriesUseCase

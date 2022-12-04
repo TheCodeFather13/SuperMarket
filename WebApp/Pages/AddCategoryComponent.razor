@@ -1,6 +1,7 @@
 ﻿@page "/addcategory"
 @using CoreBusiness
 
+@attribute [Authorize(Policy ="AdminOnly")]
 @inject IAddCategoryUseCase AddCategoryUseCase
 @inject NavigationManager NavigationManager
 
